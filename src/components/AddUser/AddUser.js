@@ -29,7 +29,7 @@ const AddUser = (props) => {
 	}
 
 	const setUserAgeHandler = (event) => {
-		let age = parseInt(event.target.value);
+		let age = event.target.value.toString();
 		setUserAge(age);
 	}
 
@@ -43,6 +43,8 @@ const AddUser = (props) => {
 				}
 			];
 			props.onClickAddUser(data);
+			setUserName('');
+			setUserAge('');
 			setIsWarning(false);
 		}
 		setIsValid(false);
@@ -55,8 +57,18 @@ const AddUser = (props) => {
 		{isError && <ErrorModal onWarningDismiss={onWarningDismiss} />}
 		<form onSubmit={onSubmithandler}>
 			<h1>Add User.</h1>
-			Name : <input name="user-name" type="text" onChange={setUserNameHandler} />
-			Age : <input name="user-age" type="number" onChange={setUserAgeHandler} />
+			<label>Name : </label>
+			<input
+				name="user-name"
+				type="text"
+				value={userName}
+				onChange={setUserNameHandler} />
+			<label>Age :</label>
+			<input
+				name="user-age"
+				type="number"
+				value={userAge}
+				onChange={setUserAgeHandler} />
 			<button type="submit">Add user</button>
 		</form>
 		{isValid && <Prompt onPromptConfirm={promptHandler} />}
