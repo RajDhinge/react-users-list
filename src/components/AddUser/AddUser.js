@@ -10,16 +10,16 @@ const AddUser = (props) => {
 
 	const onSubmithandler = (event) => {
 		event.preventDefault();
+
 		if (userName.trim().length === 0 || userAge.length === 0) {
 			setIsWarning(true);
 			return;
 		}
 
-		if (+userAge < 1) {
+		if (+userAge < 1 || Number.isNaN(+userAge)) {
 			setIsWarning(true);
 			return;
 		}
-
 		setIsValid(true);
 	}
 

@@ -29,12 +29,9 @@ function App() {
 	const [userList, setUserList] = useState(DUMMY_USER_LIST);
 
 	const addUserHandler = (user) => {
-		console.log({ user });
 		setUserList((prevUsers) => {
 			return [...user, ...prevUsers];
 		});
-
-		console.log(user);
 	}
 
 	return (
